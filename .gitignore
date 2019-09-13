@@ -1,0 +1,7 @@
+/.env
+/data/www/*
+/data/ssl/*
+/data/mysql/*
+/data/vhosts/*
+/data/logs/*
+.DS_Store
