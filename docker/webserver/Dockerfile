@@ -55,7 +55,4 @@ RUN docker-php-ext-install -j$(nproc) gd
 # Enable apache modules
 RUN a2enmod rewrite headers ssl
 
-# Default user
-RUN useradd -rm -d /home/zero -s /bin/bash -g root -G sudo -u 1000 zero
-USER zero
-WORKDIR /home/zero
+ENV APACHE_RUN_USER=#1000
