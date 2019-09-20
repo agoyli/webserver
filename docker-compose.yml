@@ -13,7 +13,7 @@ services:
     volumes: 
       - ${DOCUMENT_ROOT-./data/www}:/var/www
       - ${PHP_INI-./data/php/php.ini}:/usr/local/etc/php/php.ini
-      - ${VHOSTS_DIR-./data/vhosts}:/etc/apache2/sites-available
+      - ${VHOSTS_DIR-./data/vhosts}:/etc/apache2/sites-enabled
       - ${SSL_DIR-./data/ssl}:/etc/letsencrypt/archive
       - ${LOG_DIR-./data/logs/apache2}:/var/log/apache2
   mysql:

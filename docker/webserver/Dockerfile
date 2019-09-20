@@ -56,3 +56,5 @@ RUN docker-php-ext-install -j$(nproc) gd
 RUN a2enmod rewrite headers ssl
 
 ENV APACHE_RUN_USER=#1000
+
+WORKDIR /var/www
