@@ -20,6 +20,7 @@ services:
     build: ./docker/mysql
     container_name: 'mysql'
     restart: 'always'
+    command:  --character-set-server=utf8 --collation-server=utf8_general_ci
     ports:
       - "${HOST_MACHINE_MYSQL_PORT}:3306"
     volumes: 
