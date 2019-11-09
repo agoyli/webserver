@@ -2,8 +2,7 @@ version: "3"
 
 services:
   webserver:
-    build: 
-      context: ./docker/webserver
+    build: ./docker/webserver
     container_name: 'webserver'
     ports:
       - "${HOST_MACHINE_UNSECURE_HOST_PORT}:80"
@@ -14,8 +13,9 @@ services:
       - ${DOCUMENT_ROOT-./data/www}:/var/www
       - ${PHP_INI-./data/php/php.ini}:/usr/local/etc/php/php.ini
       - ${VHOSTS_DIR-./data/vhosts}:/etc/apache2/sites-enabled
-      - ${SSL_DIR-./data/ssl}:/etc/letsencrypt/archive
+      - ${SSL_DIR-./data/ssl}:/etc/letsencrypt
       - ${LOG_DIR-./data/logs/apache2}:/var/log/apache2
+      - ${WEBSERVER_SCRIPTS_DIR-./data/scripts}:/var/scripts
   mysql:
     build: ./docker/mysql
     container_name: 'mysql'
@@ -26,6 +26,7 @@ services:
     volumes: 
       - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
       - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
+      - ${MYSQL_SCRIPTS_DIR-./data/scripts}:/var/scripts
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
