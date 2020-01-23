@@ -10,16 +10,16 @@ fi
 
 
 mkdir ./${domain}
-mkdir ./${domain}/public
-echo "${domain} domain added" > ./${domain}/public/index.html
+mkdir ./${domain}/web
+echo "${domain} domain added" > ./${domain}/web/index.html
 mkdir ./${domain}/tmp
 chmod 777 ./${domain}/tmp
 echo "
 <VirtualHost *:80>
     ServerName ${domain}
     ServerAdmin dev@agoyli.com
-    DocumentRoot /var/www/${domain}/public
-    <Directory /var/www/${domain}/public>
+    DocumentRoot /var/www/${domain}/web
+    <Directory /var/www/${domain}/web>
         AllowOverride All
         Options +Includes -Indexes +ExecCGI
         php_admin_value open_basedir /var/www/${domain}
@@ -31,8 +31,8 @@ echo "
 <VirtualHost *:443>
     ServerName ${domain}
     ServerAdmin dev@agoyli.com
-    DocumentRoot /var/www/${domain}/public
-    <Directory /var/www/${domain}/public>
+    DocumentRoot /var/www/${domain}/web
+    <Directory /var/www/${domain}/web>
         AllowOverride All
         Options +Includes -Indexes +ExecCGI
         php_admin_value open_basedir /var/www/${domain}
